@@ -20,6 +20,8 @@ header{
     padding-top: 40px;
     background: linear-gradient(black, transparent);
     min-height: 150px;
+    display: flex;
+    justify-content: center;
 }
 
 h1{
@@ -33,7 +35,7 @@ h1 span{
     color: red;
     position: absolute;
     top: -30px;
-    left: 480px;
+    left: 80px;
     transform: rotate(13deg);
     opacity: 0.6;
 }
