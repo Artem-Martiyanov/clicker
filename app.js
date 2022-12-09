@@ -2,6 +2,7 @@ const coin = document.querySelector('.coin');
 const clickCounter = document.querySelector('.click__counter');
 const upList = document.querySelectorAll('.upgrade__list>li');
 let clickValue = 0; // Кол-во очков
+let coinPerSec = document.querySelector('.coins_per_second');
 
 
 let multipler = 0;
@@ -9,7 +10,12 @@ let multipler = 0;
 function anim(){
     coin.classList.toggle('it_clicked_animation');
 }
-
+function getPrice(currentUpgrade){          // Передаю апгрейд, возвращает его цену
+    return parseInt(currentUpgrade.querySelector('.price').innerHTML);
+}
+function setPrice(currentUpgrade, newPrice){  // Устанавливает переданную объекту currentUpgrade цену
+    currentUpgrade.querySelector('.price').innerHTML = Math.floor(newPrice)+' руб.';
+}
 
 
 
@@ -18,13 +24,13 @@ function multIncrem(currentItem){       //Увеличивает множите�
     currentSpan.innerHTML = parseInt(currentSpan.innerHTML) + 1;
 
     if (currentItem.classList.contains('up1')){
-        multipler += 0.001;
+        multipler += 0.0005;   // за 40 сек копится 5 целых рублей
     }
     if (currentItem.classList.contains('up2')){
-        multipler += 0.004;
+        multipler += 0.002;
     }
     if (currentItem.classList.contains('up3')){
-        multipler += 0.016;
+        multipler += 0.008;
     }
 }
 
@@ -36,6 +42,15 @@ function game(){
         setTimeout(anim, 100);
     }
     clickValue = clickValue + multipler; // Очки + множитель
+
+    upList.forEach(function (item){
+        if(parseInt(clickValue) >= getPrice(item)){
+            item.classList.remove('it-no-bye');
+        }
+        else {
+            item.classList.add('it-no-bye');
+        }
+    });
 
 
 
@@ -61,10 +76,22 @@ coin.addEventListener('click', function (){   // Клик на кружок
 
 upList.forEach(function (item){
    let currentUpgrade = item;
-   currentUpgrade.addEventListener("click", function (){
-       multIncrem(currentUpgrade);
 
-   });
+
+       currentUpgrade.addEventListener("click", function (){
+           if(clickValue >= getPrice(currentUpgrade)) {
+               multIncrem(currentUpgrade);
+               clickValue -=getPrice(currentUpgrade);
+               setPrice(currentUpgrade, getPrice(currentUpgrade) * 1.4)
+
+
+
+
+               coinPerSec.innerHTML = 'Твой доход: '+255 * multipler+' руб./сек';
+           }
+       });
+
+
 });
 
 

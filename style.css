@@ -1,55 +1,130 @@
 *, *:after, *:before{
     box-sizing: border-box;
+    margin: 0;
 }
+
 
 
 body{
     background: linear-gradient(lightskyblue, lightpink);
     font-family: sans-serif;
     margin: 0;
+    overflow: hidden;
 }
 
 .shadow{
     box-shadow: 1px 1px 3px black;
 }
 
+header{
+    padding-top: 40px;
+    background: linear-gradient(black, transparent);
+    min-height: 150px;
+}
+
+h1{
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+h1 span{
+
+    color: red;
+    position: absolute;
+    top: -30px;
+    left: 480px;
+    transform: rotate(13deg);
+    opacity: 0.6;
+}
+.background{
+    max-width: 1000px;
+    height: 100vmin;
+
+    margin: 0 auto;
+}
 
 .game{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
-
+    background-color: #d2fdf9;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    border-top: 10px solid cadetblue;
     max-width: 1000px;
-    height: 100vh;
+    box-shadow: inset 0px 0px 5px darkgreen;
 
-    margin: 100px auto;
+    margin: 0 auto;
 
+}
+
+.coins_per_second{
+    color: darkgrey;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
 }
 
 /*--------------UPGRADE FIELD----------------*/
 
 .upgrade__field{
-    margin-left: 100px;
-    height: 100%;
+    margin: 30px auto 0;
+    border: 5px solid cadetblue;
+    border-radius: 5px;
+
+    background-color: rgba(95, 158, 160, 0.8);
+}
+.upgrade__header{
+    text-align: center;
+    color: #fff;
+
+
+    margin: 0 0 40px 0;
+    font-size: 60px;
+
+    background-color: cadetblue;
 }
 
 .upgrade__list{
+    padding: 0 10px;
     list-style: none;
 }
 
 .upgrade__list li{
+    user-select: none;
+    position: relative;
     cursor: pointer;
     color: #fff;
     font-weight: 700;
     font-size: 30px;
     padding: 7px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border: 2px solid #ffffff;
     border-radius: 3px;
 
     transition: scale 0.2s ease;
 }
+
+
+.upgrade__list .it-no-bye{
+    color: lightgrey;
+    cursor: auto;
+    border-color: lightgrey;
+
+}
+.upgrade__list .it-no-bye:hover {
+    scale: none;
+    color: lightgrey;
+    border-color: lightgrey;
+}
+.upgrade__list .it-no-bye span{
+    color: lightgrey;
+}
+
+
 
 .upgrade__list li:hover{
     scale: 102%;
@@ -57,23 +132,34 @@ body{
     border-color: lightgreen;
 }
 
+
+
 .upgrade__list span{
-    color: blue;
+    color: darkred;
     font-size: 15px;
 }
 
+.price{
+    position: absolute;
+    top: -18px;
+    left: 0;
+}
 
 /*--------------CLICK DISPLAY----------------*/
 
 .click__display{
     margin-top: 30px;
     text-align: center;
-    color: #fff;
+    color: darkgreen;
     font-size: 20px;
     font-weight: 700;
 }
 
-/*--------------CIRCLE----------------*/
+/*--------------COIN----------------*/
+.coin__field{
+    padding-top: 30px;
+    width: 40%;
+}
 .coin{
     width: 200px;
     height: 200px;
@@ -85,6 +171,13 @@ body{
 
     background: silver url("img/ruble.png") no-repeat bottom;
     background-size: cover;
+
+
+    margin: 50px auto 0;
+}
+.coin__field p{
+    text-align: center;
+    opacity: 0.5;
 }
 
 .it_clicked_animation{
@@ -92,4 +185,9 @@ body{
     transition: all 0.1s ease;
     box-shadow: 0px 0px 50px 0px silver;
 }
+
+
+
+
+
 
